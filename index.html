@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio</title>
+
+  <!-- Google Fonts: Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Dark mode colors only */
+    :root {
+      --bg-color: #0e0e23;
+      --text-color: #e0e0e0;
+      --primary-color: #ffffff;
+      --secondary-color: #fdfdfd;
+      --accent-color: #ef476f;
+      --card-bg: #1f1f3b;
+      --nav-bg: #121232;
+      --nav-border: #2a2a4d;
+      --btn-bg: var(--secondary-color);
+      --btn-text: #121232;
+      --btn-hover-bg: #f4f4f4;
+      --shadow-color: rgba(255, 255, 255, 0.4);
+    }
+
+    /* Reset & base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      scroll-behavior: smooth;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    a:hover {
+      color: var(--secondary-color);
+    }
+
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      background: var(--nav-bg);
+      border-bottom: 1px solid var(--nav-border);
+      z-index: 999;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease, border-color 0.3s ease;
+    }
+
+    .nav-wrapper {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 0;
+    }
+
+    .logo {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--primary-color);
+      letter-spacing: 1px;
+      transition: color 0.3s ease;
+    }
+
+    .logo .highlight {
+      color: var(--secondary-color);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      position: relative;
+    }
+
+    nav ul li a {
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 6px 0;
+      display: inline-block;
+    }
+
+    nav ul li a::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 2px;
+      background: var(--secondary-color);
+      transition: width 0.3s ease;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    /* Sections */
+    section {
+      padding: 80px 0;
+      text-align: center;
+      transition: color 0.3s ease, background-color 0.3s ease;
+    }
+
+    /* Hero */
+    #hero h2 {
+      font-size: 2.8rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    #hero p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 30px;
+      color: var(--text-color);
+      opacity: 0.85;
+    }
+
+    .btn {
+      background: var(--btn-bg);
+      color: var(--btn-text);
+      padding: 12px 28px;
+      font-weight: 700;
+      border-radius: 30px;
+      box-shadow: 0 4px 10px var(--shadow-color);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--btn-hover-bg);
+      box-shadow: 0 6px 14px var(--shadow-color);
+    }
+
+    /* About Section */
+    #about h2 {
+      font-size: 2.4rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    #about p {
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      opacity: 0.85;
+    }
+
+    /* Skills Section */
+    #skills {
+      padding: 40px 0 80px;
+      text-align: center;
+    }
+
+    #skills h2 {
+      font-size: 2.4rem;
+      margin-bottom: 25px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .skill {
+      background: var(--card-bg);
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: 600;
+      color: var(--secondary-color);
+      box-shadow: 0 0 8px var(--shadow-color);
+      font-size: 0.9rem;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Education */
+    #education {
+      margin-top: 40px;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      color: var(--text-color);
+      opacity: 0.85;
+      transition: color 0.3s ease;
+    }
+
+    #education h3 {
+      margin-bottom: 10px;
+      color: var(--secondary-color);
+      font-weight: 600;
+    }
+
+    #education p {
+      margin-bottom: 20px;
+      font-size: 1rem;
+      line-height: 1.4;
+    }
+
+    /* Projects Section */
+    #projects h2 {
+      font-size: 2.4rem;
+      margin-bottom: 25px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 10px;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      padding: 25px 20px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px var(--shadow-color);
+      text-align: left;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+      cursor: default;
+      color: var(--text-color);
+    }
+
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 30px var(--shadow-color);
+    }
+
+    .project-card h3 {
+      margin-bottom: 10px;
+      color: var(--secondary-color);
+      font-weight: 700;
+      font-size: 1.4rem;
+    }
+
+    .project-card p {
+      font-size: 1rem;
+      color: var(--text-color);
+      opacity: 0.85;
+    }
+
+    /* Contact Section */
+    #contact h2 {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    #contact p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      color: var(--text-color);
+      opacity: 0.85;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--nav-bg);
+      padding: 20px 0;
+      text-align: center;
+      font-size: 0.9rem;
+      color: var(--text-color);
+      border-top: 1px solid var(--nav-border);
+      font-weight: 500;
+      transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+
+      #hero h2 {
+        font-size: 2rem;
+      }
+
+      .project-grid {
+        grid-template-columns: 1fr;
+      }
+
+      #education {
+        padding: 0 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-wrapper">
+      <a href="#" class="logo">Yuvika Varma</span></a>
+      <nav>
+        <ul>
+          <li><a href="#hero">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="hero">
+      <h2>Hello, I'm Yuvika</h2>
+      <p>B.Tech CSE(AI/ML) Student | Web Developer  </p>
+      <a href="#contact" class="btn">Get in Touch</a>
+    </section>
+
+    <section id="about" class="container">
+      <h2>About Me</h2>
+      <p>
+        I am a passionate software engineer always eager to learn and apply new technologies. 
+        I enjoy solving problems and building projects that make a difference.
+      </p>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-list container">
+        <span class="skill">Java</span>
+        <span class="skill">SQL</span>
+        <span class="skill">Data Structures</span>
+<span class="skill">Machine Learning</span>
+<span class="skill">Computer Vision</span>
+<span class="skill">OpenCV</span>
+<span class="skill">HTML & CSS</span>
+      </div>
+      <div id="education" class="container">
+        <h3>Education</h3>
+        <p>B.Tech in Computer Science, CMR Technical Campus(2026)</p>
+      </div>
+    </section>
+
+    <section id="projects" class="container">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <h3>Stock Price Prediction</h3>
+          <p>A machine learning project predicting stock prices using Python and data analysis.</p>
+        </div>
+        <div class="project-card">
+          <h3>Portfolio Website</h3>
+          <p>Responsive portfolio built with HTML, CSS, and JavaScript showcasing my work and skills.</p>
+        </div>
+        <div class="project-card">
+          <h3>Chat Application</h3>
+          <p>Real-time chat app using Node.js, Express, and Socket.io.</p>
+        </div>
+        
+    <div class="project-card">
+      <h3>Leaf Disease Detection</h3>
+      <p>System to detect plant leaf diseases using image processing and ML.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>Air Canvas</h3>
+      <p>Virtual drawing application using computer vision and hand gesture recognition.</p>
+    </div>
+
+    <div class="project-card">
+      <h3>AI-Based Emotion Recognition System</h3>
+      <p>Emotion recognition from audio/music using machine learning techniques.</p>
+    </div>
+
+      </div>
+    </section>
+
+    <section id="contact" class="container">
+      <h2>Contact</h2>
+     
+      <p>Email: yuvikavarma11@gmail.com</p>
+      <p>LinkedIn: https://www.linkedin.com/in/yuvika-varma-ab9970263/ </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2026 Yuvika Varma. All rights reserved.
+  </footer>
+
+</body>
+</html>
